@@ -2,11 +2,13 @@
 # vim: ft=yaml
 ---
 lynis:
-  install_from_package: false
-  install_from_source: true
   install_plugins: false
-  git_url: 'https://github.com/CISOfy/lynis.git'
-  use_repo: false
+
+  # Weekly audit by a systemd timer; set `enabled: false` to remove it.
+  audit:
+    enabled: true
+    on_calendar: weekly
+    randomized_delay: 6h
 
   config_dir: /etc/lynis
   config:

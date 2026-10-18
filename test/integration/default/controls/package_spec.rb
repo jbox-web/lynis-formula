@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-control 'Lynis git sources' do
+control 'Lynis package' do
   title 'should be installed'
 
-  describe directory('/usr/local/lynis') do
-    it { should exist }
+  describe package('lynis') do
+    it { should be_installed }
   end
 end

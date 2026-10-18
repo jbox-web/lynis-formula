@@ -3,11 +3,19 @@
 # Your changes will be overwritten.
 ########################################################################
 
+{#- Merged pillars may list the same entry more than once: write each entry
+    once. Entries sharing a name but not a description are kept, their
+    comments document distinct reasons. #}
 {%- for config_key, values in config.items() %}
+  {%- set seen = [] %}
   {%- for val in values %}
+    {%- set entry = val.name ~ '|' ~ val.description %}
+    {%- if entry not in seen %}
+      {%- do seen.append(entry) %}
 # Description: {{ val.description }}
 # Reason: {{ val.reason }}
 {{ config_key }}={{ val.name }}
 
-  {% endfor %}
+  {% endif %}
+  {%- endfor %}
 {%- endfor %}

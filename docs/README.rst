@@ -41,7 +41,9 @@ Please see `How to contribute <https://github.com/saltstack-formulas/.github/blo
 Special notes
 -------------
 
-None.
+The formula installs the ``lynis`` package from the repositories already
+configured on the host; it does not manage any package repository. Use the
+distribution package or declare the CISOfy repository with your APT formula.
 
 Available states
 ----------------
@@ -51,23 +53,23 @@ Available states
 
 ``lynis``
 ^^^^^^^^^
-Meta state to installs Lynis.
-
-``lynis.repo``
-^^^^^^^^^^^^^^
-Installs the Lynis repository.
+Meta state: includes ``lynis.package``, ``lynis.config`` and ``lynis.service``.
 
 ``lynis.package``
 ^^^^^^^^^^^^^^^^^
 Installs the Lynis package.
 
-``lynis.source``
-^^^^^^^^^^^^^^^^
-Installs the latest version of Lynis from it's git repository.
-
 ``lynis.config``
 ^^^^^^^^^^^^^^^^
 Installs the Lynis profiles defined in pillar in Lynis configuration directory.
+An entry listed twice with the same name and description is written once.
+
+``lynis.service``
+^^^^^^^^^^^^^^^^^
+Schedules ``lynis audit system --cronjob`` with a systemd timer
+(``lynis.timer``, weekly with a 6 hour random delay by default). The report
+stays on the host in ``/var/log/lynis-report.dat``. With
+``lynis:audit:enabled: false`` the timer is stopped and both units are removed.
 
 
 Testing

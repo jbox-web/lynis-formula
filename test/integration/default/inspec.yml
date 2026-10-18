@@ -6,7 +6,7 @@ title: lynis formula
 maintainer: SaltStack Formulas
 license: Apache-2.0
 # yamllint disable-line rule:line-length
-summary: Verify that the lynis formula is setup and configured correctly (installed using git)
+summary: Verify that the lynis formula is setup and configured correctly (installed from the distribution package)
 depends:
   - name: share
     path: test/integration/share

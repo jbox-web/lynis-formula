@@ -1,0 +1,15 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
+[Unit]
+Description=Lynis security audit
+Documentation=https://cisofy.com/documentation/lynis/
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart={{ bin }} audit system --cronjob
+Nice=19
+IOSchedulingClass=idle

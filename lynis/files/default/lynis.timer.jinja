@@ -1,0 +1,15 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
+[Unit]
+Description=Periodic Lynis security audit
+
+[Timer]
+OnCalendar={{ audit.on_calendar }}
+RandomizedDelaySec={{ audit.randomized_delay }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target

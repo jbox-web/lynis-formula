@@ -3,12 +3,16 @@
 ---
 lynis:
   package: lynis
-  install_from_package: false
-  install_from_source: true
+  bin: /usr/sbin/lynis
   install_plugins: false
-  git_url: 'https://github.com/CISOfy/lynis.git'
-  use_repo: false
 
   config_dir: /etc/lynis
   config:
     profiles: {}
+
+  # Periodic audit: a systemd timer runs `lynis audit system --cronjob`.
+  # The report stays on the host (/var/log/lynis-report.dat).
+  audit:
+    enabled: true
+    on_calendar: weekly
+    randomized_delay: 6h

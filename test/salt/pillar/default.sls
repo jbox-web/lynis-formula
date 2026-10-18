@@ -19,6 +19,9 @@ lynis:
           - name: 'KRNL-6000:net.ipv4.conf.all.log_martians'
             description: 'net.ipv4.conf.all.log_martians (exp: 1)'
             reason: What for?
-  portage_config_flags:
-    - accept_keywords:
-        - '~amd64'
+
+          # Same name and description as above: written once.
+          - name: KRNL-5788
+            description: Determine why /vmlinuz or /boot/vmlinuz is missing on this
+                         Debian/Ubuntu system
+            reason: This is OVH kernel
