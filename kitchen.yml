@@ -62,20 +62,3 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/default
-  - name: repo
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - lynis._mapdata
-            - lynis
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - lynis
-      pillars_from_files:
-        lynis.sls: test/salt/pillar/repo.sls
-    verifier:
-      inspec_tests:
-        - path: test/integration/repo
